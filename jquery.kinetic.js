@@ -439,20 +439,20 @@
 
     if ($.support.touch){
       $this
-        .bind('touchstart', settings.events.touchStart)
-        .bind('touchend', settings.events.inputEnd)
-        .bind('touchmove', settings.events.touchMove);
+        .on('touchstart', settings.events.touchStart)
+        .on('touchend', settings.events.inputEnd)
+        .on('touchmove', settings.events.touchMove);
     } else {
       $this
-        .mousedown(settings.events.inputDown)
-        .mouseup(settings.events.inputEnd)
-        .mousemove(settings.events.inputMove);
+        .on('mousedown', settings.events.inputDown)
+        .on('mouseup',settings.events.inputEnd)
+        .on('mousemove',settings.events.inputMove);
     }
     $this
-      .click(settings.events.inputClick)
-      .scroll(settings.events.scroll)
-      .bind('selectstart', selectStart) // prevent selection when dragging
-      .bind('dragstart', settings.events.dragStart);
+      .on('click',settings.events.inputClick)
+      .on('scroll', settings.events.scroll)
+      .on('selectstart', selectStart) // prevent selection when dragging
+      .on('dragstart', settings.events.dragStart);
   };
 
   Kinetic.prototype._detachListeners = function (){
@@ -460,20 +460,20 @@
     var settings = this.settings;
     if ($.support.touch){
       $this
-        .unbind('touchstart', settings.events.touchStart)
-        .unbind('touchend', settings.events.inputEnd)
-        .unbind('touchmove', settings.events.touchMove);
+        .off('touchstart', settings.events.touchStart)
+        .off('touchend', settings.events.inputEnd)
+        .off('touchmove', settings.events.touchMove);
     } else {
       $this
-        .unbind('mousedown', settings.events.inputDown)
-        .unbind('mouseup', settings.events.inputEnd)
-        .unbind('mousemove', settings.events.inputMove);
+        .off('mousedown', settings.events.inputDown)
+        .off('mouseup', settings.events.inputEnd)
+        .off('mousemove', settings.events.inputMove);
     }
     $this
-      .unbind('click', settings.events.inputClick)
-      .unbind('scroll', settings.events.scroll)
-      .unbind('selectstart', selectStart) // prevent selection when dragging
-      .unbind('dragstart', settings.events.dragStart);
+      .off('click', settings.events.inputClick)
+      .off('scroll', settings.events.scroll)
+      .off('selectstart', selectStart) // prevent selection when dragging
+      .off('dragstart', settings.events.dragStart);
   };
 
 
